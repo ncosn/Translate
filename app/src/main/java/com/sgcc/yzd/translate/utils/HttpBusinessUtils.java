@@ -1,5 +1,9 @@
 package com.sgcc.yzd.translate.utils;
 
+import android.content.Context;
+
+import androidx.lifecycle.LifecycleOwner;
+
 import com.sgcc.yzd.translate.callback.DataCallback;
 import com.sgcc.yzd.translate.model.ResponseData;
 import com.sgcc.yzd.translate.model.TranslationResponse;

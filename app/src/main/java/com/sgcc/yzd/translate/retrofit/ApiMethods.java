@@ -1,7 +1,12 @@
 package com.sgcc.yzd.translate.retrofit;
 
+import android.content.Context;
+
+import androidx.lifecycle.LifecycleOwner;
+
 import com.sgcc.yzd.translate.model.ResponseData;
 import com.sgcc.yzd.translate.model.TranslationResponse;
+import com.sgcc.yzd.translate.rxjava.RxLifecycle;
 import com.sgcc.yzd.translate.rxjava.SchedulerTransformer;
 
 import java.util.Map;
@@ -54,7 +59,7 @@ public class ApiMethods {
      * @param observer
      * @param map
      */
-    public void postTranslateAccessToken(Observer observer,Map<String,String> map) {
+    public void postTranslateAccessToken(Observer observer, Map<String,String> map) {
         MediaType mediaType = MediaType.parse("application/json");
         RequestBody body = RequestBody.create(mediaType, "{\"from\":\""+map.get("from")+"\",\"to\":\""+map.get("to")+"\",\"q\":\""+map.get("q")+"\"}");
         Api.getApiService().getAccessToken(map.get("grantType"),map.get("apiKey"),map.get("secretKey"))
@@ -68,6 +73,7 @@ public class ApiMethods {
                     }
                 })
                 .observeOn(AndroidSchedulers.mainThread())
+//                .compose(RxLifecycle.bindRxLifecycle(lifecycleOwner))
                 .subscribe(observer);
     }
 }

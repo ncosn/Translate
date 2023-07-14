@@ -1,7 +1,8 @@
-package com.sgcc.yzd.translate;
+package com.sgcc.yzd.translate.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.sgcc.yzd.translate.R;
 import com.sgcc.yzd.translate.callback.DataCallback;
 import com.sgcc.yzd.translate.config.InfoString;
 import com.sgcc.yzd.translate.model.TranslationResponse;
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        startActivity(new Intent(MainActivity.this,SecondActivity.class));
         initView();
         initData();
         initListener();
