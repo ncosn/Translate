@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_business_bill_print"
+    app:startDestination="@id/billFirstInputNumberFragment">
+
+    <fragment
+        android:id="@+id/billFirstInputNumberFragment"
+        android:name="com.sgcc.yzd.translate.fragment.BillFirstInputNumberFragment"
+        android:label="fragment_bill_first_input_number"
+        tools:layout="@layout/fragment_bill_first_input_number" />
+    <fragment
+        android:id="@+id/billFirstSelectProvinceFragment"
+        android:name="com.sgcc.yzd.translate.fragment.BillFirstSelectProvinceFragment"
+        android:label="fragment_bill_first_select_province"
+        tools:layout="@layout/fragment_bill_first_select_province" />
+    <fragment
+        android:id="@+id/billUserInfoFragment"
+        android:name="com.sgcc.yzd.translate.fragment.BillUserInfoFragment"
+        android:label="fragment_bill_user_info"
+        tools:layout="@layout/fragment_bill_user_info" />
+    <fragment
+        android:id="@+id/billDetailInfoFragment"
+        android:name="com.sgcc.yzd.translate.fragment.BillDetailInfoFragment"
+        android:label="fragment_bill_detail_info"
+        tools:layout="@layout/fragment_bill_detail_info" />
+    <fragment
+        android:id="@+id/billPrintFragment"
+        android:name="com.sgcc.yzd.translate.fragment.BillPrintFragment"
+        android:label="fragment_bill_print"
+        tools:layout="@layout/fragment_bill_print" />
+</navigation>

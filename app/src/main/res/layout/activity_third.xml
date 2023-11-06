@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:menu="@menu/toolbar_menu_third"
+            app:title="Third"
+            app:titleTextColor="@color/white" />
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+<!--            <TextView-->
+<!--                android:paddingHorizontal="36px"-->
+<!--                android:paddingVertical="18px"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="122px"-->
+<!--                android:lineHeight="48px"-->
+<!--                android:text="@string/face_tip"-->
+<!--                android:textColor="#EEAB16"-->
+<!--                android:textSize="27px"-->
+<!--                android:background="@drawable/shape_tv_tip"/>-->
+<!--        </LinearLayout>-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="19dp"-->
+<!--            android:layout_marginLeft="18dp"-->
+<!--            android:layout_marginRight="21dp"-->
+<!--            android:textSize="11dp"-->
+<!--            android:lineHeight="23dp"-->
+<!--            android:textColor="#333333"-->
+<!--            android:text="&#12288;&#12288;若您需要更换账号的实名信息，可进行如下操作：-->
+<!--        \n&#12288;&#12288;(1)若您想要更换手机号，在新手机号未注册网上国网情况下，您可以使用原手机号登录网上国网后点击 “我的-账户与安全-手机号码”进行更换手机号，将手机号更换为新手机号即可。-->
+<!--        \n&#12288;&#12288;(2)若您需变更实名认证信息，或需更换手机号但新手机号已注册，您可使用原账号登录网上国网后点击“我的-账户与安全-账户注销”申请注销，注销成功后实名信息自动清空，即可在新账号上进行实名认证。-->
+<!--        \n&#12288;&#12288;(3)如您在公安机关变更了姓名或身份信息，建议您进行注销后-->
+<!--重新注册。"/>-->
+
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:cardCornerRadius="10dp"-->
+<!--            app:cardElevation="10dp">-->
+
+<!--        </androidx.cardview.widget.CardView>-->
+
+        <Button
+            android:id="@+id/button"
+            android:shadowColor="@color/teal_700"
+            android:outlineSpotShadowColor="@color/teal_700"
+            android:outlineAmbientShadowColor="@color/teal_700"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="图片"/>
+
+        <ImageView
+            android:id="@+id/iv_glide"
+            android:layout_marginTop="10dp"
+            android:layout_width="400dp"
+            android:layout_height="200dp"
+            android:background="#6666"/>
+
+        <CheckBox
+            android:id="@+id/cb_agreement_face"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textColor="#777777"
+            android:button="@drawable/checkbox_button"
+            android:paddingLeft="4dp"
+            android:text="yiyuedu" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:background="#FEF4D8" />
+
+        <Button
+            android:id="@+id/bt_save"
+            android:text="保存"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+    <!-- 左边菜单 -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="260dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/nav_menu_third"/>
+
+</androidx.drawerlayout.widget.DrawerLayout>

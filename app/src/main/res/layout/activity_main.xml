@@ -1,76 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activity.MainActivity">
 
-    <EditText
-        android:id="@+id/et_trans"
-        android:gravity="start|top"
-        android:padding="@dimen/spacing_10"
-        android:hint="@string/edit_def"
-        android:layout_marginVertical="@dimen/spacing_10"
-        android:layout_marginHorizontal="@dimen/spacing_5"
+<!--    include 视图需要 viewBinding 另外绑定-->
+<!--    <include android:id="@+id/my_toolbar"-->
+<!--        layout="@layout/layout_my_toolbar" />-->
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        app:title="app"
+        android:background="?attr/colorPrimary"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/edit_height_200"
-        android:background="@drawable/trans_edit_border"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="4dp"/>
 
-    <Button
-        android:id="@+id/bt_trans"
-        android:text="@string/button_trans"
-        android:textSize="@dimen/font_18"
-        android:textColor="@color/white"
-        android:background="@drawable/trans_button_bg"
-        android:layout_margin="@dimen/spacing_10"
-        android:layout_width="@dimen/button_width_100"
-        android:layout_height="@dimen/button_height_40"
-        app:layout_constraintTop_toBottomOf="@id/et_trans"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/spinner_lang"/>
-
-    <Spinner
-        android:gravity="center"
-        android:id="@+id/spinner_lang"
-        android:entries="@array/spinner_lang"
-        android:layout_margin="@dimen/spacing_10"
-        android:layout_width="@dimen/spinner_width_100"
-        android:layout_height="@dimen/spinner_height_40"
-        android:background="@drawable/trans_spinner_lang"
-        app:layout_constraintStart_toEndOf="@id/bt_trans"
-        app:layout_constraintTop_toBottomOf="@id/et_trans"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-
-    <TextView
-        android:id="@+id/tv_trans"
-        android:layout_margin="@dimen/spacing_10"
-        android:text="@string/textview_trans"
-        android:textColor="@color/black"
-        android:textSize="@dimen/font_18"
-        android:layout_width="wrap_content"
+    <GridView
+        android:id="@+id/gv_function"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/bt_trans"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tv_result"
-        />
-    <TextView
-        android:id="@+id/tv_result"
-        android:hint="翻译结果"
-        android:textSize="@dimen/font_18"
-        android:textColor="@color/black"
-        android:padding="@dimen/spacing_10"
-        android:layout_margin="@dimen/spacing_10"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/textview_height_200"
-        app:layout_constraintTop_toBottomOf="@id/tv_trans"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:columnWidth="100dp"
+        android:gravity="center"
+        android:numColumns="auto_fit"
+        tools:listitem="@layout/gv_item"/>
+
+<!--    <EditText-->
+<!--        android:id="@+id/et_trans"-->
+<!--        android:gravity="start|top"-->
+<!--        android:padding="@dimen/spacing_10"-->
+<!--        android:hint="@string/edit_def"-->
+<!--        android:layout_marginVertical="@dimen/spacing_10"-->
+<!--        android:layout_marginHorizontal="@dimen/spacing_5"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/edit_height_200"-->
+<!--        android:background="@drawable/trans_edit_border"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"/>-->
+
+<!--    <Button-->
+<!--        android:id="@+id/bt_trans"-->
+<!--        android:text="@string/button_trans"-->
+<!--        android:textSize="@dimen/font_18"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:background="@drawable/trans_button_bg"-->
+<!--        android:layout_margin="@dimen/spacing_10"-->
+<!--        android:layout_width="@dimen/button_width_100"-->
+<!--        android:layout_height="@dimen/button_height_40"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/et_trans"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toStartOf="@id/spinner_lang"/>-->
+
+<!--    <Spinner-->
+<!--        android:gravity="center"-->
+<!--        android:id="@+id/spinner_lang"-->
+<!--        android:entries="@array/spinner_lang"-->
+<!--        android:layout_margin="@dimen/spacing_10"-->
+<!--        android:layout_width="@dimen/spinner_width_100"-->
+<!--        android:layout_height="@dimen/spinner_height_40"-->
+<!--        android:background="@drawable/trans_spinner_lang"-->
+<!--        app:layout_constraintStart_toEndOf="@id/bt_trans"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/et_trans"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"/>-->
+
+
+<!--    <TextView-->
+<!--        android:id="@+id/tv_trans"-->
+<!--        android:layout_margin="@dimen/spacing_10"-->
+<!--        android:text="@string/textview_trans"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="@dimen/font_18"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/bt_trans"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/tv_result"-->
+<!--        />-->
+<!--    <TextView-->
+<!--        android:id="@+id/tv_result"-->
+<!--        android:hint="翻译结果"-->
+<!--        android:textSize="@dimen/font_18"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:padding="@dimen/spacing_10"-->
+<!--        android:layout_margin="@dimen/spacing_10"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/textview_height_200"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tv_trans"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent" />-->
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

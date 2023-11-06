@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/dp_21"
+        android:layout_marginEnd="@dimen/dp_21"
+        android:background="@color/white"
+        android:layout_marginBottom="@dimen/dp_10"
+        app:cardCornerRadius="@dimen/dp_7"
+        tools:context=".cloudterminal.fragment.first.BusinessFirstSelectProvinceFragment">
+
+        <!-- TODO: Update blank fragment layout -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_input_number"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/dp_13"
+            android:paddingStart="@dimen/dp_21"
+            android:paddingEnd="@dimen/dp_21"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/tv_input_house_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp_11"
+                android:text="输入户号"
+                android:textColor="#666666"
+                android:textSize="@dimen/sp_15"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_house_province"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="@dimen/dp_11"
+                android:paddingBottom="@dimen/dp_11"
+                android:text="江苏省"
+                android:textColor="#458BFF"
+                android:textSize="@dimen/sp_11"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/view_input_line"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:layout_marginTop="@dimen/dp_6"
+                android:background="#F3F4F5"
+                app:layout_constraintTop_toBottomOf="@id/tv_input_house_number" />
+
+            <EditText
+                android:id="@+id/et_input_house_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_3"
+                android:layout_marginTop="@dimen/dp_11"
+                android:layout_marginEnd="@dimen/dp_3"
+                android:cursorVisible="true"
+                android:elevation="@dimen/dp_1"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:hint="请输入户号"
+                android:maxLength="20"
+                android:maxLines="1"
+                android:paddingStart="@dimen/dp_13"
+                android:paddingTop="@dimen/dp_11"
+                android:paddingBottom="@dimen/dp_11"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/dp_13"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_input_line" />
+
+            <TextView
+                android:id="@+id/tv_scan_electric_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_13"
+                android:drawablePadding="@dimen/dp_3"
+                android:text="扫描电卡二维码获取"
+                android:textColor="#458BFF"
+                android:textSize="@dimen/dp_13"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_input_house_number" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_input_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_26"
+                android:layout_marginTop="@dimen/dp_13"
+                android:layout_marginEnd="@dimen/dp_26"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_scan_electric_card" />
+
+            <TextView
+                android:id="@+id/tv_history_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp_11"
+                android:text="历史户号"
+                android:textColor="#666666"
+                android:textSize="@dimen/sp_15"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_scan_electric_card" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_history_number"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/dp_13"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_history_number" />
+
+            <Button
+                android:id="@+id/btn_input_clear"
+                android:layout_width="@dimen/dp_114"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp_13"
+                android:text="清除"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btn_input_confirm"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="@id/rv_input_number"
+                app:layout_constraintTop_toBottomOf="@id/rv_input_number" />
+
+            <Button
+                android:id="@+id/btn_input_confirm"
+                android:layout_width="@dimen/dp_114"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp_13"
+                android:text="确定"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/rv_input_number"
+                app:layout_constraintStart_toEndOf="@id/btn_input_clear"
+                app:layout_constraintTop_toBottomOf="@id/rv_input_number" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_scan_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_13"
+            android:paddingStart="@dimen/dp_21"
+            android:paddingEnd="@dimen/dp_21"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_scan_house_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp_11"
+                android:paddingBottom="@dimen/dp_11"
+                android:text="扫描户号"
+                android:textColor="#666666"
+                android:textSize="@dimen/sp_15"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <View
+                android:id="@+id/view_scan_line"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:layout_marginTop="@dimen/dp_6"
+                android:background="#F3F4F5"
+                app:layout_constraintTop_toBottomOf="@id/tv_scan_house_number" />
+
+            <TextView
+                android:id="@+id/tv_scan_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_13"
+                android:text="请按以下方式扫描户号二维码"
+                android:textColor="#666666"
+                android:textSize="@dimen/sp_11"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_scan_line" />
+
+            <ImageView
+                android:id="@+id/view_scan_qr_code"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_163"
+                android:layout_marginStart="@dimen/dp_43"
+                android:layout_marginTop="@dimen/dp_33"
+                android:layout_marginEnd="@dimen/dp_43"
+                android:background="#FFF1E5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_scan_code" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

@@ -13,4 +13,11 @@
         <item>中文(繁体)</item>
         <item>中文(粤语)</item>
     </string-array>
+    <string name="title_activity_bottom_navigation">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="face_tip">\t\t\t为充分保护您的个人权益及财产安全，核实是您本人操作，我们需要您提供面部信息。同一身份信息只能验证一个账号，验证后将无法修改。面部识别信息属于敏感信息，请谨慎提供， 我们将严格保护您的个人信息安全。</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

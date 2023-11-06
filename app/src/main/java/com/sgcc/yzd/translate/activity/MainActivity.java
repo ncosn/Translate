@@ -1,126 +1,126 @@
 package com.sgcc.yzd.translate.activity;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
+import com.google.android.material.navigation.NavigationView;
 import com.sgcc.yzd.translate.R;
 import com.sgcc.yzd.translate.callback.DataCallback;
 import com.sgcc.yzd.translate.config.InfoString;
+import com.sgcc.yzd.translate.databinding.ActivityMainBinding;
 import com.sgcc.yzd.translate.model.TranslationResponse;
+import com.sgcc.yzd.translate.service.DownTimerService;
 import com.sgcc.yzd.translate.utils.HttpBusinessUtils;
+import com.sgcc.yzd.translate.utils.WindowUtils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import static com.sgcc.yzd.translate.utils.WindowUtils.countDown;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    /**翻译目标语言，0表示英语，1表示日语，2表示韩语，3表示德语，4表示中文（简体），5中文（繁体），6表示中文（粤语）*/
-    private int lang = 0;
+    // 功能组
+    private String[] functions = new String[]{"翻译","glide","长图","BottomNavigation", "ViewPager", "Navigation"};
+    private int[] ids = new int[]{R.drawable.ic_baseline_translate_24,R.drawable.ic_baseline_image_search_24, R.drawable.ic_baseline_image_24, R.drawable.ic_baseline_power_input_24,
+            R.drawable.ic_baseline_power_input_24, R.drawable.ic_baseline_navigation_24};
 
-    EditText etTrans;
-    Button btTrans;
-    TextView tvResult;
-    Spinner spLang;
+//    EditText etTrans;
+//    Button btTrans;
+//    TextView tvResult;
+//    Spinner spLang;
+    private com.sgcc.yzd.translate.databinding.ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        startActivity(new Intent(MainActivity.this,SecondActivity.class));
-        initView();
-        initData();
-        initListener();
-    }
+        // 使用ViewBinding绑定布局
+        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-    private void initListener() {
-        btTrans.setOnClickListener(v -> {
-            Map<String,String> map = new HashMap<>();
-            map.put("grantType", InfoString.GRANT_TYPE);
-            map.put("apiKey",InfoString.API_KEY);
-            map.put("secretKey",InfoString.SECRET_KEY);
-            map.put("from","zh");
-            switch (lang) {
-                case 0:
-                    map.put("to","en");
-                    break;
-                case 1:
-                    map.put("to","jp");
-                    break;
-                case 2:
-                    map.put("to","kor");
-                    break;
-                case 3:
-                    map.put("to","de");
-                    break;
-                case 4:
-                    map.put("to","zh");
-                    break;
-                case 5:
-                    map.put("to","cht");
-                    break;
-                case 6:
-                    map.put("to","yue");
-                    break;
-                default:
-                    break;
-            }
-            map.put("q", etTrans.getText().toString().trim());
-            HttpBusinessUtils.postTranslateAccessToken(map, new DataCallback<TranslationResponse>() {
-                @Override
-                public void onSuccess(TranslationResponse result) {
-                    // 获取译文内容
-                    if (result.getResult()!=null) {
-                        // 正常返回
-                        String translation = result.getResult().getTransResult().get(0).getDst();
-                        tvResult.setText(translation);
-                    } else {
-                        // 异常返回
-                        String error = result.getErrorMsg();
-                        tvResult.setText(error);
-                    }
-                }
+        // 设置标题栏
+        setSupportActionBar(binding.myToolbar);
+        // 隐藏标题栏
+        //getSupportActionBar().hide();
+        // 显示标题栏
+        //getSupportActionBar().show();
 
-                @Override
-                public void onError(String error) {
-                    // 显示异常信息
-                    tvResult.setText(error);
-                }
-            });
-        });
 
-        spLang.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+        final List<Map<String, Object>> list = new ArrayList<>();
+        for (int i = 0; i < functions.length; i++) {
+            Map<String, Object> map = new HashMap<>();
+            map.put("functions",functions[i]);
+            map.put("img",ids[i]);
+            list.add(map);
+        }
+        String[] from = new String[]{"functions","img"};
+        int[] to = new int[]{R.id.tv_item, R.id.iv_item};
+        // 待优化，使用自定义适配器 getView() 动态调整列宽
+        SimpleAdapter adapter = new SimpleAdapter(this,list,R.layout.gv_item,from,to);
+        binding.gvFunction.setAdapter(adapter);
+
+        binding.gvFunction.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // 选择翻译目标语言
-                spLang.setSelection(position);
-                lang=position;
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                spLang.setSelection(0);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                System.out.println("id:"+id);
+                switch (position) {
+                    case 0:
+                        startActivity(new Intent(MainActivity.this, SecondActivity.class));
+                        break;
+                    case 1:
+                        startActivity(new Intent(MainActivity.this, ThirdActivity.class));
+                        break;
+                    case 2:
+                        startActivity(new Intent(MainActivity.this, FourthActivity.class));
+                        break;
+                    case 3:
+                        startActivity(new Intent(MainActivity.this, BottomNavigationActivity.class));
+                        break;
+                    case 4:
+                        startActivity(new Intent(MainActivity.this, MyViewPagerActivity.class));
+                        break;
+                    case 5:
+                        startActivity(new Intent(MainActivity.this, NavigationActivity.class));
+                        break;
+                    default:
+                        break;
+                }
             }
         });
     }
 
-    private void initData() {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu_third,menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
-    private void initView() {
-        etTrans = findViewById(R.id.et_trans);
-        btTrans = findViewById(R.id.bt_trans);
-        tvResult = findViewById(R.id.tv_result);
-        spLang = findViewById(R.id.spinner_lang);
-
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        System.out.println("onOptionsItemSelected");
+        return super.onOptionsItemSelected(item);
     }
+
 }

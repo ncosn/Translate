@@ -29,6 +29,11 @@ public class MyViewModel extends ViewModel {
         return text;
     }
 
+    public void setText(String text) {
+        System.out.println("setText"+text);
+        this.text.setValue(text);
+    }
+
     public MutableLiveData<String> getTranslation() {
         if (translation ==null) {
             translation = new MutableLiveData<>();
@@ -39,6 +44,7 @@ public class MyViewModel extends ViewModel {
     }
 
     public void setTranslation(String translation) {
+        System.out.println("setTranslation:"+translation);
         this.translation.setValue(translation);
     }
 
@@ -47,10 +53,12 @@ public class MyViewModel extends ViewModel {
             lang = new MutableLiveData<>();
             lang.setValue(0);
         }
+        System.out.println("getLang...");
         return lang;
     }
 
     public void setLang(int lang) {
+        System.out.println("setLang:"+lang);
         this.lang.setValue(lang);
     }
 
@@ -60,7 +68,7 @@ public class MyViewModel extends ViewModel {
         map.put("grantType", InfoString.GRANT_TYPE);
         map.put("apiKey",InfoString.API_KEY);
         map.put("secretKey",InfoString.SECRET_KEY);
-        map.put("from","zh");
+        map.put("from","auto");
         switch ((lang.getValue()!=null)?lang.getValue():0) {
             case 0:
                 map.put("to","en");
@@ -111,8 +119,6 @@ public class MyViewModel extends ViewModel {
     }
 
     public void onSelectItem(AdapterView<?> parent, View view, int pos, long id) {
-        getLang();
-        System.out.println(pos);
         setLang(pos);
     }
 

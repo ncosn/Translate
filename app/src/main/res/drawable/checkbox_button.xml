@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    <item android:state_checked="true" android:drawable="@drawable/checkbox_bg" >-->
+    <item android:state_checked="true" android:drawable="@drawable/checkbox_bg" >
+<!--        <shape>-->
+<!--            <corners android:radius="12.5dp" />-->
+<!--            <solid android:color="" />-->
+<!--            <size android:height="11dp" android:width="11dp" />-->
+<!--        </shape>-->
+    </item>
+<!--    <item android:state_checked="false" android:drawable="@drawable/checkbox_bg_white">-->
+    <item android:state_checked="false" android:drawable="@drawable/checkbox_bg_white">
+<!--        <shape>-->
+<!--            <corners android:radius="12.5dp" />-->
+<!--            <solid android:color="@color/yellow_light" />-->
+<!--            <size android:height="11dp" android:width="11dp" />-->
+<!--        </shape>-->
+    </item>
+</selector>
