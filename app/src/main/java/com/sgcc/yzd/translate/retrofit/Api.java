@@ -33,7 +33,9 @@ public class Api {
     private Api() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://aip.baidubce.com/")
+                // 添加转换器工厂
                 .addConverterFactory(GsonConverterFactory.create())
+                // 请求指定适配器RxJava，例如原本拿到的是Call<String>，使用rxjava的calladapter转换成Observable<String>。
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(getHttpClient())
                 .build();
@@ -43,6 +45,10 @@ public class Api {
 
     private OkHttpClient getHttpClient() {
         return new OkHttpClient.Builder()
+                // 动态添加token
+                // .addInterceptor(new TokenHeaderInterceptor)
+                // 返回空字符串时显示
+                // .addInterceptor(new NullResponseInterceptor)
                 .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
                 .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
                 .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)

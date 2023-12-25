@@ -3,7 +3,6 @@ package com.sgcc.yzd.translate.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 
 import android.os.Bundle;
@@ -12,12 +11,11 @@ import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
 import com.sgcc.yzd.translate.R;
+import com.sgcc.yzd.translate.model.User;
 import com.sgcc.yzd.translate.databinding.ActivityThirdBinding;
 
 import org.jetbrains.annotations.NotNull;
@@ -33,6 +31,12 @@ public class ThirdActivity extends AppCompatActivity {
 
         binding = ActivityThirdBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // 传输Parcelable数据
+        Bundle arguments = getIntent().getBundleExtra("bundle");
+        User personBean = arguments.getParcelable("user");
+        binding.tvUserName.setText(personBean.getName());
+        binding.tvUserEmail.setText(personBean.getEmail());
 
 
         // 设置标题栏

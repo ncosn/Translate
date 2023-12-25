@@ -45,12 +45,12 @@ public class NavigationActivity extends AppCompatActivity {
         navController.setGraph(navDestinations);
     }
 
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-        resetAutoExitTime();//页面触摸重置60s倒计时
-//        WindowUtils.countDown();
-        return super.dispatchTouchEvent(ev);
-    }
+//    @Override
+//    public boolean dispatchTouchEvent(MotionEvent ev) {
+//        resetAutoExitTime();//页面触摸重置60s倒计时
+////        WindowUtils.countDown();
+//        return super.dispatchTouchEvent(ev);
+//    }
 
     //触发重置60s倒计时
     public void resetAutoExitTime() {

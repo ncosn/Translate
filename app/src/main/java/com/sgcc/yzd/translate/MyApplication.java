@@ -18,16 +18,16 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        try {
-            mInstance = this;
-            isDeal = true;
-            Intent intent = new Intent(this, DownTimerService.class);
-            intent.putExtra("num", 10);
-            this.startService(intent);
-            System.out.println("MyApplication:onCreate()-------startService");
-        } catch (IllegalStateException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            mInstance = this;
+//            isDeal = true;
+//            Intent intent = new Intent(this, DownTimerService.class);
+//            intent.putExtra("num", 10);
+//            this.startService(intent);
+//            System.out.println("MyApplication:onCreate()-------startService");
+//        } catch (IllegalStateException e) {
+//            e.printStackTrace();
+//        }
 
 
         // 取消订阅后，抛出的异常无法捕获，导致程序崩溃

@@ -53,6 +53,10 @@ public class BillFirstInputNumberFragment extends Fragment {
             }
         });
 
+        binding.tvScanElectricCard.setOnClickListener((v)-> {
+            navController.navigate(R.id.billDetailInfoFragment);
+        });
+
         return binding.getRoot();
     }
 

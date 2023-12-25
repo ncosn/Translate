@@ -1,41 +1,24 @@
 package com.sgcc.yzd.translate.activity;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.SimpleAdapter;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toolbar;
 
-import com.google.android.material.navigation.NavigationView;
 import com.sgcc.yzd.translate.R;
-import com.sgcc.yzd.translate.callback.DataCallback;
-import com.sgcc.yzd.translate.config.InfoString;
+import com.sgcc.yzd.translate.model.User;
 import com.sgcc.yzd.translate.databinding.ActivityMainBinding;
-import com.sgcc.yzd.translate.model.TranslationResponse;
-import com.sgcc.yzd.translate.service.DownTimerService;
-import com.sgcc.yzd.translate.utils.HttpBusinessUtils;
-import com.sgcc.yzd.translate.utils.WindowUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static com.sgcc.yzd.translate.utils.WindowUtils.countDown;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -90,7 +73,13 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(MainActivity.this, SecondActivity.class));
                         break;
                     case 1:
-                        startActivity(new Intent(MainActivity.this, ThirdActivity.class));
+                        //通过Bundle 传递
+                        User user = new User("cns","ddd@");
+                        Bundle params = new Bundle();
+                        params.putParcelable("user", user);
+                        Intent intent = new Intent(MainActivity.this, ThirdActivity.class);
+                        intent.putExtra("bundle",params);
+                        startActivity(intent);
                         break;
                     case 2:
                         startActivity(new Intent(MainActivity.this, FourthActivity.class));
