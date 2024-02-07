@@ -14,10 +14,13 @@ import java.util.Map;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import retrofit2.http.Field;
 
 public class ApiMethods {
 
@@ -74,6 +77,13 @@ public class ApiMethods {
                 })
                 .observeOn(AndroidSchedulers.mainThread())
 //                .compose(RxLifecycle.bindRxLifecycle(lifecycleOwner))
+                .subscribe(observer);
+    }
+
+    public void postCurtain(Number deviceType, Number deviceNo, Number angle, Number deviceId, Number distance,Observer observer) {
+        Api.getApiService().controlCurtain(deviceType,deviceNo,angle,deviceId,distance)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer);
     }
 }

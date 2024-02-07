@@ -7,4 +7,36 @@
     android:layout_height="match_parent"
     tools:context=".activity.FifthActivity">
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+  <com.sgcc.yzd.translate.activity.ui.view.CustomView
+      android:id="@+id/customview"
+      android:layout_width="80dp"
+      android:layout_height="80dp"
+      android:layout_marginStart="144dp"
+      android:layout_marginTop="128dp"
+      android:background="#000000"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <FrameLayout
+      android:background="#4334"
+      android:id="@+id/framelayout"
+      android:layout_width="match_parent"
+      android:layout_height="442dp"
+      android:layout_marginBottom="16dp"
+      app:layout_constraintBottom_toBottomOf="parent">
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="152dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginStart="20dp"/>
+  </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

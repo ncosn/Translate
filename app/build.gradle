@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
+    compileSdk 28
 
     buildFeatures {
         dataBinding true
@@ -35,6 +35,7 @@ android {
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
+//    implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
@@ -83,6 +84,16 @@ dependencies {
 
     // blankj
     implementation 'com.blankj:utilcode:1.30.6'
+
+    // mqtt
+    implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0'
+    implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
+
+    // room
+//    implementation 'androidx.room:room-runtime:2.3.0'
+//    annotationProcessor 'androidx.room:room-compiler:2.3.0'
+    implementation "androidx.room:room-runtime:$rootProject.roomVersion"
+    annotationProcessor "androidx.room:room-compiler:$rootProject.roomVersion"
 
 }
 

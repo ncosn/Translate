@@ -1,5 +1,7 @@
 package com.sgcc.yzd.translate.retrofit;
 
+import com.sgcc.yzd.translate.common.Constant;
+
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -32,7 +34,8 @@ public class Api {
 
     private Api() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://aip.baidubce.com/")
+//                .baseUrl("https://aip.baidubce.com/")
+                .baseUrl(Constant.IOT_CENTRAL_CONTROL_PLATFORM_URL)
                 // 添加转换器工厂
                 .addConverterFactory(GsonConverterFactory.create())
                 // 请求指定适配器RxJava，例如原本拿到的是Call<String>，使用rxjava的calladapter转换成Observable<String>。

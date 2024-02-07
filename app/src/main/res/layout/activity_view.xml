@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.sgcc.yzd.translate.activity.ui.view.ViewGroup1 xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#595B5D"
+    android:orientation="vertical"
+    tools:context=".activity.ViewActivity">
+    <com.sgcc.yzd.translate.activity.ui.view.ViewGroup2
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:background="#87939A"
+        android:orientation="vertical">
+        <com.sgcc.yzd.translate.activity.ui.view.MyView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:background="@color/white"/>
+
+    </com.sgcc.yzd.translate.activity.ui.view.ViewGroup2>
+
+</com.sgcc.yzd.translate.activity.ui.view.ViewGroup1>

@@ -5,6 +5,7 @@ import android.content.Context;
 import androidx.lifecycle.LifecycleOwner;
 
 import com.sgcc.yzd.translate.callback.DataCallback;
+import com.sgcc.yzd.translate.model.HttpResponse;
 import com.sgcc.yzd.translate.model.ResponseData;
 import com.sgcc.yzd.translate.model.TranslationResponse;
 import com.sgcc.yzd.translate.retrofit.Api;
@@ -118,5 +119,30 @@ public class HttpBusinessUtils {
             }
         };
         ApiMethods.newInstance().postTranslateAccessToken(observer, map);
+    }
+
+    public static void postCurtainControl(Number deviceType, Number deviceNo, Number angle, Number deviceId, Number distance,DataCallback<HttpResponse> callback) {
+        Observer<HttpResponse> observer = new Observer<HttpResponse>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(HttpResponse value) {
+                callback.onSuccess(value);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                callback.onError(e.toString());
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        };
+        ApiMethods.newInstance().postCurtain(deviceType,deviceNo,angle,deviceId,distance,observer);
     }
 }
