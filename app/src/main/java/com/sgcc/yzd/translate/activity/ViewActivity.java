@@ -2,11 +2,13 @@ package com.sgcc.yzd.translate.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 
 import com.sgcc.yzd.translate.R;
+import com.sgcc.yzd.translate.service.HandlerService;
 
 public class ViewActivity extends AppCompatActivity {
 

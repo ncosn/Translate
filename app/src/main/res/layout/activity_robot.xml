@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#A6BACE"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".activity.RobotActivity">
 
 
@@ -21,8 +21,26 @@
 
     <TextView
         android:id="@+id/tv_result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:text="erq"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="#1AA6BACE"
+        android:textSize="11sp"
+        android:textColor="#333333"
+        android:padding="9dp"
+        android:layout_marginBottom="10dp"
+        />
+
+    <ImageView
+        android:id="@+id/iv_smile"
+        android:background="@color/black"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="100dp"/>
 
 
-</LinearLayout>
+</FrameLayout>

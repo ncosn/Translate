@@ -2,11 +2,22 @@ package com.sgcc.yzd.translate.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.blankj.utilcode.util.BusUtils;
+import com.blankj.utilcode.util.ToastUtils;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.sgcc.yzd.translate.MyApplication;
 import com.sgcc.yzd.translate.R;
+import com.sgcc.yzd.translate.base.RoundedCornersTransformation;
 import com.sgcc.yzd.translate.databinding.ActivityFifthBinding;
 import com.sgcc.yzd.translate.databinding.ActivityRobotBinding;
 import com.sgcc.yzd.translate.db.AppDatabase;
@@ -15,7 +26,10 @@ import com.sgcc.yzd.translate.db.entity.Instruction;
 import com.sgcc.yzd.translate.retrofit.Api;
 import com.sgcc.yzd.translate.retrofit.ApiMethods;
 import com.sgcc.yzd.translate.retrofit.ApiService;
+import com.sgcc.yzd.translate.service.HandlerService;
 import com.sgcc.yzd.translate.utils.HttpBusinessUtils;
+
+import org.w3c.dom.Text;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -35,12 +49,41 @@ public class RobotActivity extends AppCompatActivity {
 
     Map<Integer,Device> deviceMap;
 
+    private Handler handler;
+    Boolean isFront = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityRobotBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        BusUtils.register(this);
+        // 设置 Glide 请求选项，使用 RoundedCorners 进行圆角转换
+        RequestOptions requestOptions = new RequestOptions()
+                .transform(new RoundedCorners(30));
 
+        Glide.with(this)
+                .asGif()
+                .load(R.drawable.smile)
+                .transform(new RoundedCornersTransformation(this, 8))
+                .apply(requestOptions)
+                .into(binding.ivSmile);
+
+//        handler = new Handler(getMainLooper()) {
+//            @Override
+//            public void handleMessage(Message msg) {
+//                switch (msg.what) {
+//                    case 100:
+//                        break;
+//                    case 101:
+//                        Intent intent = new Intent(RobotActivity.this,WebViewActivity.class);
+//                        startActivity(intent);
+//                        break;
+//                }
+//                super.handleMessage(msg);
+//            }
+//        };
+//        handler.sendEmptyMessage(100);
 //        initDatabase();
 
 //        instructions = database.instructionDao().queryAllInstructions();
@@ -57,48 +100,79 @@ public class RobotActivity extends AppCompatActivity {
         binding.btPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                HttpBusinessUtils.postCurtainControl();
-//                Instruction instruction = database.instructionDao().queryInstruction("开户");
-                Instruction instruction = null;
-                String words = binding.etText.getText().toString().trim();
-                binding.tvResult.setText(words);
-                for (Instruction i : instructions) {
-                    if (words.contains(i.getKeyWords())) {
-                        instruction = i;
-                        break;
-                    }
-                }
-                if (null == instruction) {
-                    binding.tvResult.append("没听清\n");
-                } else {
-                    switch (instruction.getQueryType()) {
-                        case 0:
-                            binding.tvResult.setText(instruction.getQueryReply());
-                            break;
-                        case 1:
-                        case 2:
-                        case 3:
-//                            if (deviceMap == null) {
-//                                deviceMap = new HashMap<>();
-//                                for (Device device : devices) {
-//                                    deviceMap.put(device.getDeviceId(),device);
-//                                }
-//                                break;
-//                            }
-                            List<Integer> deviceIds = Arrays.stream(instruction.getDeviceId().split(","))
-                                    .map(Integer::parseInt)
-                                    .collect(Collectors.toList());
-                            for (Integer deviceId : deviceIds) {
-                                Device device = deviceMap.get(deviceId);
-                                binding.tvResult.append(device.getDeviceAlias());
-                            }
-                            break;
-                        default:
-                            break;
-                    }
-                }
+//                Intent intent = new Intent(RobotActivity.this, HandlerService.class);
+//                startService(intent);
+//                BusUtils.post("platform");
+                binding.tvResult.setText("应用配置文件中包含应用配置信息、应用组件信息、权限信息、开发者自定义信息等，这些信息在编译构建、分发和运行解决分别提供给编译工具、应用市场和操作系统使用。在基于Stage模型开发的应用项目代码下，都存在app.json5（一个）及module.json5（一个或多个）两种配置文件，常");
             }
         });
+//        binding.btPost.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                HttpBusinessUtils.postCurtainControl();
+////                Instruction instruction = database.instructionDao().queryInstruction("开户");
+//                Instruction instruction = null;
+//                String words = binding.etText.getText().toString().trim();
+//                binding.tvResult.setText(words);
+//                for (Instruction i : instructions) {
+//                    if (words.contains(i.getKeyWords())) {
+//                        instruction = i;
+//                        break;
+//                    }
+//                }
+//                if (null == instruction) {
+//                    binding.tvResult.append("没听清\n");
+//                } else {
+//                    switch (instruction.getQueryType()) {
+//                        case 0:
+//                            binding.tvResult.setText(instruction.getQueryReply());
+//                            break;
+//                        case 1:
+//                        case 2:
+//                        case 3:
+////                            if (deviceMap == null) {
+////                                deviceMap = new HashMap<>();
+////                                for (Device device : devices) {
+////                                    deviceMap.put(device.getDeviceId(),device);
+////                                }
+////                                break;
+////                            }
+//                            List<Integer> deviceIds = Arrays.stream(instruction.getDeviceId().split(","))
+//                                    .map(Integer::parseInt)
+//                                    .collect(Collectors.toList());
+//                            for (Integer deviceId : deviceIds) {
+//                                Device device = deviceMap.get(deviceId);
+//                                binding.tvResult.append(device.getDeviceAlias());
+//                            }
+//                            break;
+//                        default:
+//                            break;
+//                    }
+//                }
+//            }
+//        });
+    }
+
+    @Override
+    protected void onResume() {
+        isFront = true;
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        isFront = false;
+        super.onPause();
+    }
+
+    @BusUtils.Bus(tag = "platform")
+    public void jumpToPlatform() {
+        ToastUtils.showShort("deqddqewdqwd");
+        binding.btPost.setText("dwdwdqd");
+        if (isFront) {
+            Intent intent = new Intent(RobotActivity.this,WebViewActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void initDatabase() {
@@ -363,4 +437,9 @@ public class RobotActivity extends AppCompatActivity {
         database.deviceDao().insertDevice(device);
     }
 
+    @Override
+    protected void onDestroy() {
+        BusUtils.unregister(this);
+        super.onDestroy();
+    }
 }

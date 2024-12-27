@@ -15,6 +15,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<!--        <service-->
+<!--            android:name=".service.GuardService"-->
+<!--            android:enabled="true"-->
+<!--            android:exported="true"></service>-->
+<!--        <service-->
+<!--            android:name=".service.RobotService"-->
+<!--            android:enabled="true"-->
+<!--            android:exported="true" />-->
+        <service
+            android:name=".service.HandlerService"
+            android:enabled="true"
+            android:exported="true" />
+
         <activity
             android:name=".activity.WebViewActivity"
             android:exported="false" />

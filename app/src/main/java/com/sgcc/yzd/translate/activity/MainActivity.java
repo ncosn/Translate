@@ -25,10 +25,10 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
 
     // 功能组
-    private String[] functions = new String[]{"翻译","glide","长图","BottomNavigation", "ViewPager", "Navigation","View","Robot","WebView"};
+    private String[] functions = new String[]{"翻译","glide","长图","BottomNavigation", "ViewPager", "Navigation","View","Robot"};
     private int[] ids = new int[]{R.drawable.ic_baseline_translate_24,R.drawable.ic_baseline_image_search_24, R.drawable.ic_baseline_image_24, R.drawable.ic_baseline_power_input_24,
             R.drawable.ic_baseline_power_input_24, R.drawable.ic_baseline_navigation_24, R.drawable.baseline_view_compact_24, R.drawable.baseline_view_compact_24,
-            R.drawable.baseline_view_compact_24};
+            };
 
 //    EditText etTrans;
 //    Button btTrans;
@@ -98,11 +98,13 @@ public class MainActivity extends AppCompatActivity {
                     case 6:
 //                        startActivity(new Intent(MainActivity.this,FifthActivity.class));
                         startActivity(new Intent(MainActivity.this,ViewActivity.class));
+                        break;
                     case 7:
                         startActivity(new Intent(MainActivity.this, RobotActivity.class));
-
-                    case 8:
-                        startActivity(new Intent(MainActivity.this, WebViewActivity.class));
+                        break;
+//                    case 8:
+//                        startActivity(new Intent(MainActivity.this, WebViewActivity.class));
+//                        break;
                     default:
                         break;
                 }
